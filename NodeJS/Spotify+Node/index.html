@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <!-- <button type="button" class="my_selector2" onclick="loadXMLDoc()">Click Me!</button> -->
+    <button type="button" class="anterior">Previous</button>
+    <button type="button" class="pausar">Play/Pause</button>
+    <button type="button" class="siguiente">Next</button>
+
+
+    <script>
+ //     $('select').on('change', function() {
+   //     $.get('/colorsRequest', { color : $(this).val() });
+     // });
+
+window.open("http://www.w3schools.com", "_self");
+
+    $(document).ready(function(){
+
+     // alert("bien");
+
+      $('.pausar').click(function(){
+        //alert("pulsando");
+        //$.get("http://127.0.0.1:3000/pausar");
+        $.ajax({type: "GET",
+                url: "http://127.0.0.1:3000/pausar",
+                cache:false});
+      }); 
+
+            $('.siguiente').click(function(){
+        //alert("pulsando");
+        //$.get("http://127.0.0.1:3000/pausar");
+        $.ajax({type: "GET",
+                url: "http://127.0.0.1:3000/siguiente",
+                cache:false});
+      }); 
+
+            $('.anterior').click(function(){
+        //alert("pulsando");
+        //$.get("http://127.0.0.1:3000/pausar");
+        $.ajax({type: "GET",
+                url: "http://127.0.0.1:3000/anterior",
+                cache:false});
+      }); 
+    });
+
+//alert("hola");
+
+// function loadXMLDoc()
+// {
+
+//   var xmlhttp;
+
+//   xmlhttp=new XMLHttpRequest();
+//   xmlhttp.open("GET","http://127.0.0.1:3000/pausar",true);
+//   xmlhttp.send();
+// }
+
+    </script>
+  </body>
+</html>

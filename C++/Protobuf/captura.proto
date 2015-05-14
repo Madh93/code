@@ -1,0 +1,60 @@
+// sensorsreport.proto - Protocolo de comunicaciones con Arduino
+//
+message Captura {
+
+    required string usuario = 1;        // Nombre del usuario
+    required uint64 timestamp = 2;      // Seg. desde 1/1/1970
+    required bytes imagen = 3;          // Datos de la imagen
+    required string dispositivo = 4;    // Nombre de la camara
+
+    message Roi {
+        required int32 x = 1;
+        required int32 y = 2;
+        required int32 width = 3;
+        required int32 height = 4;
+    }
+
+    repeated Roi rois = 5;  //Vector de rois
+}
+/*
+    enum SensorType {
+        HUMIDITY = 0;
+        LUMINOSITY = 1;
+        MOTION = 2;
+        TEMPERATURE = 3;
+    }
+
+    message SensorStatus {
+        required SensorType type = 1;
+        required int32 value = 2;
+    }
+
+    repeated SensorStatus sensors = 3;  // Vector de estados de los
+                                        // sensores
+*/                                        
+
+    Captura captura;
+
+    captura.set_usuario("Mrs. Random");
+    //...
+
+    for (int i=0; i<ROIS_SIZE; i++) {
+        Captura::Roi *roi = captura.add_rois();
+        roi->set_x(ROIS_X[i]);
+        roi->set_y(ROIS_Y[i]);
+        roi->set_width(ROIS_WIDTH[i]);
+        roi->set_height(ROIS_HEIGHT[i]);
+    }
+
+    //...
+
+
+    QVector<Captura::Roi> rois;
+
+    for (int i=0; i<captura.rois_size(); i++)
+        rois.push_back(captura.rois(i));
+
+    // rois[0].x()
+    // rois[0].y()
+    // rois[0].width()
+    // rois[0].height()

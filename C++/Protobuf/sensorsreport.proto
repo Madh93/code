@@ -1,0 +1,21 @@
+// sensorsreport.proto - Protocolo de comunicaciones con Arduino
+//
+message SensorsReport {
+    required string deviceName = 1;     // Nombre del Arduino
+    required uint64 timestamp = 2;      // Seg. desde 1/1/1970
+
+    enum SensorType {
+        HUMIDITY = 0;
+        LUMINOSITY = 1;
+        MOTION = 2;
+        TEMPERATURE = 3;
+    }
+
+    message SensorStatus {
+        required SensorType type = 1;
+        required int32 value = 2;
+    }
+
+    repeated SensorStatus sensors = 3;  // Vector de estados de los
+                                        // sensores
+}

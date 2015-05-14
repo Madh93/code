@@ -1,0 +1,83 @@
+ {
+    "lrc": {
+        "index": {
+            "add-server": "Připojit se na nový server",
+            "help": "Pomoc"
+        },
+        "add-server": {
+            "account-name": "Uživatelské jméno",
+            "ip-address": "IP adresa",
+            "cancel": "Zrušit",
+            "save": "Uložit"
+        },
+        "help": {
+            "add-server": "Jak se připojit na server",
+            "install": "Jak nainstalovat na GNU/Linux",
+            "contribute": "Jak mohu projektu pomoci",
+            "bugs": "Nahlásit chybu",
+            "feedback": "Poslat zpětnou vazbu",
+            "about": "O aplikaci",
+            "credits": "Zásluhy"
+        },
+        "server": {
+            "p1": "Pro připojení na server (ovládaný počítač) je potřeba znát jeho IP adresu, kterou lze zjistit příkazem:",
+            "p2": "Zpravidla začíná číslem 192 a je napsaná za slovem inet. Celé toto číslo vložte do kolonky \"přidat nový server\"."
+        },
+        "install": {
+            "p1": "Pro správnou funkčnost aplikace, potřebujete mít na straně serveru nainstalovaný lrc-server.",
+            "p2": "1. Stáhněte si lrc.",
+            "p3": "2. Nainstalujte .deb balíček.",
+            "p4": "3. Přesun ten registr /opt/lrc-client na tvůj přistroj.",
+            "p5": "3. Spusťte lrc-server.",
+            "p6": "5. Otevři index.html na tvójim přistrojí (PŘISTROJ/lrc-client/index.html) v browseru, připoj ten server a bav se."
+        },
+        "contribute": {
+            "p1": "Líbí se vám projekt a chcete pomoci?",
+            "p2": "Pokud jste programátor,  můžete pomoci na <a href=\"https://github.com/Agneli/linux-remote-control\" target=\"_blank\" >Github</a>.",
+            "p3": "Nebo aplikaci sdílet mezi svými známými <a href=\"https://plus.google.com/u/0/100656630688184691057/posts\" target=\"_blank\" >Google+</a>, <a href=\"https://www.facebook.com/pages/Linux-Remote-Control/199080510274186\" target=\"_blank\" >Facebook</a> a <a href=\"https://twitter.com/LinuxRemoteCont\" target=\"_blank\" >Twitter</a>, nebo přispět finančně."
+        },
+        "bugs": {
+            "p1": "Budeme rádi za jakékoliv nahlášení chyby.",
+            "p2": "Můžete je nám sdělit na <a href=\"https://github.com/Agneli/linux-remote-control/issues\" target=\"_blank\" >Github</a> nebo napsat na:"
+        },
+        "feedback": {
+            "p1": "Řekněte nám, co si o aplikaci myslíte. Rádi od vás uslyšíme, návrhy, pochvaly i kritiku."
+        },
+        "about": {
+            "p1": "Tento program je  Open Source projekt licencován v rámci GNU GPL licence.",
+            "p2": "To znamená úplnou svobodu ve stahování a používání zdarma.",
+            "link": "<a href=\"http://www.linuxremotecontrol.com/index-en.html\" target=\"_blank\">www.linuxremotecontrol.com</a>"
+        },
+        "menu": {
+            "music": "Hudba",
+            "video": "Video",
+            "controls": "Základní ovládání",
+            "touchpad": "Touchpad",
+            "slideshow": "Slideshow",
+            "custom-commands": "Vlastní příkazy",
+            "settings": "Nastavení"
+        },
+        "controls": {
+            "send-custom-command": "Odeslat příkaz",
+            "command": "příkaz",
+            "send-command": "odeslat příkaz"
+        },
+        "custom-commands": {
+            "add": "Přidat vlastní příkaz",
+            "name": "Název",
+            "command": "Příkaz"
+        },
+        "settings": {
+            "language": "Jazyk (language)",
+            "theme": "Téma",
+            "audio": "Přehrávač audio",
+            "video": "Přehrávač video",
+            "cancel": "Zrušit",
+            "save": "Uložit"
+        },
+        "credits": {
+            "dev": "Programátor",
+            "trad": "Překladatel"
+        }
+    }
+}

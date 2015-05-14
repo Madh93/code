@@ -1,0 +1,7 @@
+# Ignorar...
+
+Libros/
+RubyAyuda/
+Rails/apps/treebook*
+*.pdf
+*.out
