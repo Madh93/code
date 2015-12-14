@@ -7,13 +7,21 @@ module Transformer
     def initialize(img, angle)
       super(img)
       @angle = Math.to_radians(angle)
+      @coord = nil
     end
 
     def create_image
       super do
-        w = @original.width * Math.cos(@angle) - @original.height * Math.sin(@angle)
-        h = @original.width * Math.sin(@angle) + @original.height * Math.cos(@angle)
-        ChunkyPNG::Image.new(w.round.abs, h.round.abs)
+
+        a = t_directa(0, 0)
+        b = t_directa(@original.width-1,0)
+        c = t_directa(@original.width-1, @original.height-1)
+        d = t_directa(0,@original.height-1)
+
+        @coord = point([a.x,b.x,c.x,d.x].min,
+                      [a.y,b.y,c.y,d.y].min)
+
+        ChunkyPNG::Image.new((a.x-c.x-1).round.abs,(b.y-d.y-1).round.abs)
       end
     end
     
@@ -23,36 +31,21 @@ module Transformer
         cx = ((x / @height))
         cy = ((x % @height))
 
-        large =  [@width,@height].max - 1
-        puts @height
-
-
-        # 90
-        if (cx == 199) && (cy == 319)
-          puts  @height-1 - (cx * Math.cos(@angle) + cy * Math.sin(@angle)).round.abs
-          puts   (-cx * Math.sin(@angle) + cy * Math.cos(@angle)).round.abs
-        end
-
-        # 180
-        # if (cx == 319) && (cy == 199)
-        #   puts  @width-1 - (cx * Math.cos(@angle) + cy * Math.sin(@angle)).round.abs
-        #   puts  @height-1 -(-cx * Math.sin(@angle) + cy * Math.cos(@angle)).round.abs
-        # end
-
-        # 270 width=200
-        # if (cx == 199) && (cy == 319)
-        #   puts  (cx * Math.cos(@angle) + cy * Math.sin(@angle)).round.abs
-        #   puts  @width-1- (-cx * Math.sin(@angle) + cy * Math.cos(@angle)).round.abs
-        # end
-
-        #puts (cx * Math.cos(@angle) + cy * Math.sin(@angle)).round.abs
-        #puts (-cx * Math.sin(@angle) + cy * Math.cos(@angle)).round.abs
-        @original[@height-1 -(cx * Math.cos(@angle) + cy * Math.sin(@angle)).round.abs,
-                  (-cx * Math.sin(@angle) + cy * Math.cos(@angle)).round.abs]
-
-
-        #ChunkyPNG::Color.rgb(0,0,0)
+        p = t_indirecta(cx + @coord.x, cy + @coord.y)
+        
+        @original[p.x.to_i, p.y.to_i]
       end
     end
+
+    def t_directa(x, y)
+      point(x * Math.cos(@angle) - y * Math.sin(@angle),
+            x * Math.sin(@angle) + y * Math.cos(@angle))
+    end
+
+    def t_indirecta(x, y)
+      point(x * Math.cos(@angle) + y * Math.sin(@angle),
+            -x * Math.sin(@angle) + y * Math.cos(@angle))
+    end
+
   end
 end

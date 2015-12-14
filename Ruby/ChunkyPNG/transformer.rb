@@ -15,5 +15,5 @@ NAME = "bogart"
 image = ChunkyPNG::Image.from_file("#{PATH}#{NAME}.png")
 
 # image2 = Transformer::Bilineal.new(image,2.0).transform
-image2 = Transformer::Rotacion.new(image,90).transform
+image2 = Transformer::Rotacion.new(image,-90).transform
 image2.save("#{PATH}#{NAME}2.png")

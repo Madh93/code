@@ -1,10 +1,11 @@
 require "chunky_png"
 require_relative "utils/rgb"
+require_relative "utils/point"
 
 module Transformer
   class Transformation
       
-    include Rgb
+    include Rgb, Point
     
     def initialize(img)
       @original = img
