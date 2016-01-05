@@ -1,0 +1,14 @@
+Cambiar SPEC aqui, pero luego mover a ~/rpmbuild/SPECS
+Descargar .tar.gz de github y renombrarlo como v0.X.tar.gz y ponerlo en ~/rpmbuild/SOURCES
+
+Vamos a la carpeta del SPECS
+
+Para comprobar errores:
+
+	rpmlint oranchelo-icon-theme.spec
+
+Para crear RPM desde el archivo spec
+
+	rpmbuild -ba oranchelo-icon-theme.spec
+
+En caso de funciona, se creara en ~/rpmbuild/RPMS/noarch el .rpm
