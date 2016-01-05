@@ -21,7 +21,11 @@ module Transformer
         @coord = point([a.x,b.x,c.x,d.x].min,
                       [a.y,b.y,c.y,d.y].min)
 
-        ChunkyPNG::Image.new((a.x-c.x-1).round.abs,(b.y-d.y-1).round.abs)
+        width = [a,b,c,d].map{ |e| e.x.abs}.max.round
+        height = [a,b,c,d].map{ |e| e.y.abs}.max.round
+
+        # ChunkyPNG::Image.new((a.x-c.x-1).round.abs,(b.y-d.y-1).round.abs)
+        ChunkyPNG::Image.new(width, height)
       end
     end
     
@@ -33,7 +37,14 @@ module Transformer
 
         p = t_indirecta(cx + @coord.x, cy + @coord.y)
         
-        @original[p.x.to_i, p.y.to_i]
+        # Comprobar e interpolar
+
+        if valid?(p.x.round,p.y.round)
+          @original[p.x.round, p.y.round]
+        else
+          ChunkyPNG::Color.rgb(255,255,255)
+        end
+
       end
     end
 
@@ -45,6 +56,10 @@ module Transformer
     def t_indirecta(x, y)
       point(x * Math.cos(@angle) + y * Math.sin(@angle),
             -x * Math.sin(@angle) + y * Math.cos(@angle))
+    end
+
+    def valid?(x, y)
+      x.between?(0,@original.width-1) && y.between?(0,@original.height-1)
     end
 
   end
